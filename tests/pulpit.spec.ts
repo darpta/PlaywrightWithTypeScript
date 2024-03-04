@@ -27,7 +27,7 @@ test.describe('Pulpit test', () => {
 
     // Assert
     await expect(page.locator('#show_messages')).toHaveText(
-      `Przelew wykonany! ${expectedTransferReceiver} - ${transferAmount},00PLN - ${transferTitle}`
+      `Przelew wykonany! ${expectedTransferReceiver} - ${transferAmount},00PLN - ${transferTitle}`,
     );
   });
 
@@ -39,7 +39,7 @@ test.describe('Pulpit test', () => {
 
     const phoneNumber = '502 xxx xxx';
     const phoneAmount = '50';
-    
+
     // Act
     await page.goto(url);
     await page.getByTestId('login-input').fill(userId);
@@ -53,7 +53,8 @@ test.describe('Pulpit test', () => {
     await page.getByTestId('close-button').click();
 
     // Assert
-    await expect(page.locator('#show_messages')).toHaveText(`Doładowanie wykonane! ${phoneAmount},00PLN na numer ${phoneNumber}`)
+    await expect(page.locator('#show_messages')).toHaveText(
+      `Doładowanie wykonane! ${phoneAmount},00PLN na numer ${phoneNumber}`,
+    );
   });
-
 });
