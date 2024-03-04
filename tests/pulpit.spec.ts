@@ -1,12 +1,15 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Pulpit test', () => {
-  const userId = 'testerLO';
-  const userPassword = '10987654';
-  
   test.beforeEach(async ({ page }) => {
     const url = 'https://demo-bank.vercel.app/'; // const to stala zmienna
+    const userId = 'testerLO';
+    const userPassword = '10987654';
+
     await page.goto(url);
+    await page.getByTestId('login-input').fill(userId);
+    await page.getByTestId('password-input').fill(userPassword);
+    await page.getByTestId('login-button').click();
   });
 
   test('quick payment with correct data', async ({ page }) => {
@@ -17,14 +20,9 @@ test.describe('Pulpit test', () => {
     const expectedTransferReceiver = 'Chuck Demobankowy';
 
     // Act
-    await page.getByTestId('login-input').fill(userId);
-    await page.getByTestId('password-input').fill(userPassword);
-    await page.getByTestId('login-button').click();
-
     await page.locator('#widget_1_transfer_receiver').selectOption(receiverId);
     await page.locator('#widget_1_transfer_amount').fill(transferAmount);
     await page.locator('#widget_1_transfer_title').fill(transferTitle);
-
     await page.getByRole('button', { name: 'wykonaj' }).click();
     await page.getByTestId('close-button').click();
 
@@ -40,10 +38,6 @@ test.describe('Pulpit test', () => {
     const phoneAmount = '50';
 
     // Act
-    await page.getByTestId('login-input').fill(userId);
-    await page.getByTestId('password-input').fill(userPassword);
-    await page.getByTestId('login-button').click();
-
     await page.locator('#widget_1_topup_receiver').selectOption(phoneNumber);
     await page.locator('#widget_1_topup_amount').fill(phoneAmount);
     await page.locator('#uniform-widget_1_topup_agreement span').click();

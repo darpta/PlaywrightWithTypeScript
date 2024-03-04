@@ -1,15 +1,13 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('User loginto Demobank', () => {
-  const userId = 'testerLO';
-  
   test.beforeEach(async ({ page }) => {
-    const url = 'https://demo-bank.vercel.app/'; // const to stala zmienna
-    await page.goto(url);
+    await page.goto('/');
   });
 
   test('successful login with correct credentials', async ({ page }) => {
     // Arrange
+    const userId = 'testerLO';
     const userPassword = '10987654';
     const expectedUserName = 'Jan Demobankowy';
 
@@ -38,6 +36,7 @@ test.describe('User loginto Demobank', () => {
 
   test('unsuccessful login with too short password', async ({ page }) => {
     // Arrange
+    const userId = 'testerLO';
     const userWrongPassword = 'darek';
 
     // Act
