@@ -44,6 +44,9 @@ hit twice <kbd>Ctrl</kbd> + <kbd>C</kbd>
 - `test.only()` tylko oznaczony test sie wykona
 - `test.skip()` pomija oznaczony test
 - line duplicate: Alt + Shift + <kbd>strzalka w dol</kbd>
+- przeniesienie linii w gore lub w dol: Alt + <kbd>strzalka w dol lub w gore</kbd>
+- dodanie zmiennej: Ctrl + Shift + R
+- wstawianie zmiennej do stringa: najpierw zmiana z '' na `` potem zmienna do ${zmienna}
 
 ## Playwright snippets
 - test:
