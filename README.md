@@ -21,8 +21,21 @@
   `npx playwright test --headed`
 - view report  
   `npx playwright show-report`
+- run Trace Viewer on zip file  
+  `npx playwright show-trace trace.zip`
 - cancelling Node process  
   hit twice <kbd>Ctrl</kbd> + <kbd>C</kbd>
+
+### Updating Playwright
+
+- check if Playwright should be updated  
+  `npm outdated @playwright/test`
+- update Playwright  
+  `npm i @playwright/test`
+- update browsers  
+  `npx playwright install`
+- verify Playwright version  
+  `npx @playwright/test --version`
 
 ## Playwright Config modifications
 
@@ -35,6 +48,18 @@
   //     ...devices['Desktop Firefox'],
   //   },
   // },
+  ```
+- enable video on fail
+  ```javascript
+  use: {
+      video: {'retain-on-failure'},
+  },
+  ```
+- enable Trace Viewer on fail
+  ```javascript
+  use: {
+      trace: {'retain-on-failure'},
+  },
   ```
 
 ## Visual Studio Code
@@ -55,6 +80,7 @@
 - Move line i.e. up: <kbd>Alt</kbd> + <kbd>↑</kbd>
 - Show autocomplete suggestion: <kbd>Ctrl</kbd> + <kbd>Spacebar</kbd>
 - Creating a new variable: Refactor <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> -> Extract to constant in enclosing scope
+- uzupelnianie nazw folderow i plikow: przycisk TAB (naciskac wiecej razy az do wlasciwej nazwy)s
 
 ## Playwright snippets
 
@@ -97,12 +123,10 @@
 - configure Prettier
 
   - exlude files in `.prettierignore`
-
     ```
     package-lock.json
     playwright-report
     test-results
-
     ```
 
   - set rules in `.prettierrc.json`

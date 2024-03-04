@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Pulpit test', () => {
-  test.skip('test', async ({ page }) => {
+  test.skip('test login with CPR', async ({ page }) => {
     await page.goto('https://test-mobileapp.betri.fo/app/');
     await page.locator("//span[text()='Rita inn']").click();
     // await page.getByPlaceholder('Rita inn').click();
@@ -13,13 +13,11 @@ test.describe('Pulpit test', () => {
     await page.getByRole('button', { name: 'Rita út' }).click();
   });
 
-  test('test login', async ({ page }) => {
+  test.only('test login with credentials', async ({ page }) => {
     // Arrange
     const url = 'https://test-mobileapp.betri.fo/app/';
     const userId = '041265981';
     const userPassword = 'Mokr5ZunkK66';
-    const accessUrl =
-      'https://test-mobileapp.betri.fo/app/access-verified/home';
 
     // Act
     await page.goto(url);
@@ -28,11 +26,18 @@ test.describe('Pulpit test', () => {
     await page.getByLabel('Password').fill(userPassword);
     await page.getByRole('button', { name: 'Sign In' }).click();
 
-    // await page.locator('navigation-panel').getByText('Mín brúkari').click();
-    // await page.getByRole('button', { name: 'Rita út' }).click();
-
     //Assert
-    await expect(page).toHaveURL(accessUrl);
-    await expect(page).toHaveURL(/access-verified/); // sprawdza czesc adresu
+    await expect(page).toHaveURL(/access-verified/);
   });
 });
+
+/*
+const accessUrl = 'https://test-mobileapp.betri.fo/app/access-verified/home';
+
+// Assert
+await expect(page).toHaveURL(accessUrl)
+
+other to test:
+    // await page.locator('navigation-panel').getByText('Mín brúkari').click();
+    // await page.getByRole('button', { name: 'Rita út' }).click();
+*/
