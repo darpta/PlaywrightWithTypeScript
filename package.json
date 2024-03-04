@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test_pulpit": "npx playwright test tests/pulpit.spec.ts",
+    "test_betri": "npx playwright test tests/betri.spec.ts --headed",
+    "test_login": "npx playwright test tests/login.spec.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

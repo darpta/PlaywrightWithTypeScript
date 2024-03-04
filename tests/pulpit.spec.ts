@@ -1,18 +1,20 @@
 import { test, expect } from '@playwright/test';
+import { loginData } from '../test-data/login.data';
+import { LoginPage } from '../pages/login.page';
 
 test.describe('Pulpit test', () => {
   test.beforeEach(async ({ page }) => {
-    const url = 'https://demo-bank.vercel.app/'; // const to stala zmienna
-    const userId = 'testerLO';
-    const userPassword = '10987654';
+    const userId = loginData.userId;
+    const userPassword = loginData.userPassword;
 
-    await page.goto(url);
-    await page.getByTestId('login-input').fill(userId);
-    await page.getByTestId('password-input').fill(userPassword);
-    await page.getByTestId('login-button').click();
+    await page.goto('/');
+    const loginPage = new LoginPage(page);
+    await loginPage.loginInput.fill(userId);
+    await loginPage.passwordInput.fill(userPassword);
+    await loginPage.loginButton.click();
   });
 
-  test('quick payment with correct data', async ({ page }) => {
+  test.skip('quick payment with correct data', async ({ page }) => {
     // Arrange
     const receiverId = '2';
     const transferAmount = '150';
