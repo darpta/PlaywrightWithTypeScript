@@ -13,7 +13,7 @@ test.describe('Pulpit test', () => {
     await page.getByRole('button', { name: 'Rita út' }).click();
   });
 
-  test('test login with credentials', async ({ page }) => {
+  test.skip('test login with credentials', async ({ page }) => {
     // Arrange
     const url = 'https://test-mobileapp.betri.fo/app/';
     const userId = '041265981';

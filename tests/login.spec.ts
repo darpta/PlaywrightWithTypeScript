@@ -11,8 +11,6 @@ test.describe('User loginto Demobank', () => {
     // Arrange
     const userId = loginData.userId;
     const userPassword = loginData.userPassword;
-    // const userId = 'testerLO';
-    // const userPassword = '10987654';
     const expectedUserName = 'Jan Demobankowy';
 
     // Act
@@ -22,7 +20,7 @@ test.describe('User loginto Demobank', () => {
     await loginPage.loginButton.click();
 
     // Assert
-    await expect(page.getByTestId('user-name')).toHaveText(expectedUserName);
+    await expect(loginPage.userNameText).toHaveText(expectedUserName);
   });
 
   test('unsuccessful login with too short username', async ({ page }) => {
@@ -39,7 +37,7 @@ test.describe('User loginto Demobank', () => {
     await expect(loginPage.loginError).toHaveText(expectedErrorMessage);
   });
 
-  test.only('unsuccessful login with too short password', async ({ page }) => {
+  test('unsuccessful login with too short password', async ({ page }) => {
     // Arrange
     const userId = loginData.userId;
     const userWrongPassword = 'darek';
