@@ -15,7 +15,7 @@ test.describe('Payment tests', () => {
 
     const pulpitPage = new PulpitPage(page)
     await pulpitPage.sideMenu.paymentButton.click()
-    paymentPage = new PaymentPage(page);
+    //paymentPage = new PaymentPage(page);
     // await page.getByRole('link', { name: 'Płatności' }).click();
   });
 
